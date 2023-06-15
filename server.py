@@ -106,6 +106,11 @@ def signup():
 
 @app.route('/login', methods=['POST','GET'])
 def login():
+    """Login function that verifies if the user have an account or not in the database
+
+    Returns:
+        url_for: depends if the user could log in or not it will redirect it to the login page or the signup page, or the home page
+    """
     if not session.get("email"):
         if request.method == 'POST':
             user_email = request.form.get("emailad")
