@@ -160,6 +160,8 @@ def database(email):
 def password_ceck(mdps):
     if len(mdps) > 7:
         return True
+    else:
+        return False
 
 
 if __name__ == '__main__':
