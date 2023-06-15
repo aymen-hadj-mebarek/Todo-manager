@@ -136,11 +136,14 @@ def login():
     
 @app.route('/tasks', methods=['POST','GET'])
 def tasks():
-    if session:
-        param = session.get('email')
+    if session.get('email'):
+        session['id'] = db.session.query(user).filter(user.email == session.get("email")).first().id
+        
+        return render_template("tasks.html",param=session.get('email'))
     else:
-        param = None 
-    return render_template('tasks.html',param=param)
+        flash("You need to log in to access to your tasks",category="error")
+        return redirect(url_for("home"))
+    # return render_template('tasks.html',param=param)
 
 @app.route('/logout')
 def logout():
