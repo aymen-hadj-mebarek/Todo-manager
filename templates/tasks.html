@@ -1,0 +1,46 @@
+{% extends 'navbar.html' %}
+{% block title %}
+Tasks
+{% endblock %}
+{% block content %}
+<div class="tasks">
+    <form action="#" method="POST">
+        <div class="addtask">
+            <input type="text" id="task_added" placeholder="What task you want to add ? and for when its due to ?" required>
+            <input type="date" name="task_date" id="task_date" required>
+            <input type="submit" value="Add Task">
+        </div>
+    
+    </form>
+    <br><br>
+    <!-- <h2>You dont have any tasks to do</h2> -->
+
+    <table>
+        <tr>
+            <th>Task</th>
+            <th>Added</th>
+            <th>Delai</th>
+            <th>Actions</th>
+        </tr>
+        <tr class="not_done">
+            <td>content</td>
+            <td>days</td>   
+            <td>days left</td>   
+            <td><a href="/delete/">Delete</a> <br> <a href="/update/">Update</a></td>
+        </tr>
+        <tr class="done passed">
+            <td>content</td>
+            <td>days</td>   
+            <td>days left</td>   
+            <td><a href="/delete/">Delete</a> <br> <a href="/update/">Update</a></td>
+        </tr>
+        <tr class="not_done passed">
+            <td>content</td>
+            <td>days</td>   
+            <td>days left</td>   
+            <td><a href="/delete/">Delete</a> <br> <a href="/update/">Update</a></td>
+        </tr>
+    </table>
+</div>
+
+{% endblock %}

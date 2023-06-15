@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" href="{{url_for('static',filename='icone.ico')}}" type="image/x-icon">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><img src="{{url_for('static',filename='Logo.png')}}" alt="Todo LOGO" id="logo_image"></li>
+            {% if param  %}
+            <li> <a href="/home">Home</a> </li>
+            <li> <a href="/tasks">Tasks</a> </li>
+            <li> <a href="/logout">Log Out</a> </li>
+            {% else %}
+            <li> <a href="/home">Home</a> </li>
+            <li> <a href="/SignUp">Sign Up</a> </li>
+            <li> <a href="/login">Login</a> </li>
+            {% endif %}
+            
+            
+        </ul>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

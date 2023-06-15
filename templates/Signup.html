@@ -1,0 +1,44 @@
+{% extends 'Home.html' %}
+{% block title %}
+Sign Up
+{% endblock %}
+{% block infos %}
+
+<div class="Signup">
+    <h1>Signing Up Forum</h1>
+    
+    <form action="/SignUp" method="POST">
+        <div class="champ">
+            <label for="name">Your name : </label>
+                
+            <input type="text" name="name" id="name">
+        </div>
+        <div class="champ">
+            <label for="emailad">Email address : </label>
+                
+            <input type="email" name="emailad" id="emailad">
+        </div>
+        <div class="champ">
+            <label for="mdps">Your password : </label>
+                
+            <input type="password" name="mdps" id="mdps">
+        </div>
+        <div class="champ">
+            <label for="mdps_check">Confirm your password : </label>
+                
+            <input type="password" name="mdps_check" id="mdps_check">    
+        </div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="flash error">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="champ">
+            <input type="submit" value="Sign Up">
+        </div>
+        </form>
+</div>
+
+{% endblock %}

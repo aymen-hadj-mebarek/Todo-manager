@@ -1,0 +1,29 @@
+{% extends 'navbar.html' %}
+{% block title %}
+Home Page
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    
+
+    <div class="text">
+        <h1>Task Manager</h1>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat soluta sint doloremque itaque facilis ipsum assumenda totam earum ullam atque? In blanditiis illum culpa id ducimus adipisci consectetur veritatis laboriosam!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, beatae? Deserunt nisi, ab dignissimos aliquid modi maiores, repellat eum beatae illum quod magni perspiciatis deleniti eius vitae blanditiis architecto accusamus.
+    </div>
+    {% block infos %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="flash info">{{ message }}</div>
+
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    {% endblock %}
+    
+</div>
+
+{% endblock %}

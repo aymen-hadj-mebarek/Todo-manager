@@ -1,0 +1,32 @@
+{% extends 'Home.html' %}
+{% block title %}
+Loggin in
+{% endblock %}
+{% block infos %}
+<div class="login">
+    <h1>Logging In Forum</h1>
+    <form action="/login" method="POST">
+        <div class="champ">
+            <label for="emailad">Email address : </label>
+                
+            <input type="email" name="emailad" id="emailad">
+        </div>
+        <div class="champ">
+            <label for="mdps">Your password : </label>
+                
+            <input type="password" name="mdps" id="mdps">
+        </div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="flash error">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="champ">
+            <input type="submit" value="Login">
+        </div>
+        </form>
+</div>
+
+{% endblock %}

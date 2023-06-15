@@ -1,0 +1,298 @@
+*{
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0;
+}
+body{
+    background: rgb(185,102,211);
+    background: linear-gradient(90deg, rgba(61,41,177,1) 0%, rgba(185,102,211,1) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.navbar{
+    width: 100%;
+    border-bottom-left-radius: 20%;
+    border-bottom-right-radius: 50%;
+    background-color: white;
+}
+#logo_image{
+    height: 90px;
+}
+a{
+    text-decoration: none;
+    color: black ;
+    transition: all 0.3s;
+
+}
+a:hover{
+    font-size: 110%;
+    background: linear-gradient(to right, rgba(61,41,177,1) 0%, rgba(185,102,211,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s;
+}
+ul{
+    text-decoration: none;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 60%;
+    height: 100px;
+}
+ul li{
+    font-size: 30px;
+}
+h1{
+    background: linear-gradient(to right, rgba(61,41,177,1) 0%, rgba(185,102,211,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.container{
+    width: 80%;
+    margin: 50px;
+    padding: 0px 50px ;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 500px;
+    border-radius: 200px;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+}
+.container .text{
+    margin-left: 20px;
+    width: 30%;
+    font-size: 20px;
+    text-align: center;
+    position: relative;
+    right: 40px;
+}
+.container .Signup{
+    padding: 30px 0 ;
+    background-color: white;
+    border: solid;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    position: relative;
+    right: 40px;
+    font-size: 20px;
+}
+.container .Signup::before{
+    border-radius: 40px;
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(to right, rgba(61,41,177,1) 0%, rgba(185,102,211,1) 100%);
+    z-index: -1;
+    filter: blur(5px);
+    animation: border_animation 3s linear infinite;
+}
+.Signup .champ{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container .login{
+    padding: 30px 0px ;
+    background-color: white;
+    border: solid;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    position: relative;
+    right: 40px;
+    font-size: 20px;
+}
+.container .login::before{
+    border-radius: 40px;
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(to right, rgba(61,41,177,1) 0%, rgba(185,102,211,1) 100%);
+    z-index: -1;
+    filter: blur(5px);
+    animation: border_animation 3s linear infinite;
+}
+.login form{
+    width: 90%;
+    margin: 0;
+}
+.Signup form{
+    width: 90%;
+    margin: 0;
+}
+.login form .champ{
+    width: 100%;
+    margin: 20px 0px ;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.champ label{
+    margin: 5px;
+}
+.champ input{
+    width: 60%;
+    height: 30px;
+    background-color: #f5f5f5;
+    text-align: center;
+    border-radius: 10px;
+}
+.champ input[type="submit"]{
+    margin-top: 20px ;
+    font-size: 20px;
+    height: 40px;
+    width: 30%;
+    border-radius: 20px;
+}
+.champ input[type="submit"]:hover{
+    cursor: pointer;
+    background: linear-gradient(90deg, rgba(61,41,177,1) 0%, rgba(185,102,211,1) 100%);
+    color: white;
+    transition: color 0.3s, transform 0.3s;
+    border: none;
+}
+.tasks{
+    margin: 50px;
+    padding: 30px;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 40px;
+    height: auto;
+}
+.tasks form{
+    width: 90%;
+}
+.tasks .addtask{
+    border: solid;
+    background-color: white;
+    border-radius: 40px;
+    padding: 0;
+    width: 100%;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.tasks .addtask #task_added{
+    border-radius: 40px;
+    font-size: 20px;
+    height: 35px;
+    padding: 0 10px ;
+    border: none;
+    width: 80%;
+}
+.tasks .addtask input[type="text"]:focus{
+    border: none;
+}
+.tasks .addtask input[type="submit"]{
+    border-radius: 40px;
+    font-size: 20px;
+    height: 35px;
+    padding: 0 10px ;
+    border: none;   
+    width: 15%;
+}
+.tasks .addtask input[type="date"]{
+    border-radius: 40px;
+    font-size: 20px;
+    height: 35px;
+    padding: 0 10px ;
+    border: none;   
+    width: 20%;
+}
+.tasks .addtask input[type="submit"]:hover{
+    cursor: pointer;
+    background: linear-gradient(90deg, rgba(61,41,177,1) 0%, rgba(185,102,211,1) 100%);
+    color: white;
+    transition: color 0.3s, transform 0.3s;
+    border: none;
+}
+table{
+    width: 80%;
+}
+table th{
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+    height: 40px;
+}
+table td{
+    font-size: 20px;
+    height: 40px;
+    margin: 2px;
+    border: solid;
+    text-align: center;
+    border-radius: 40px;
+    background-color: white;
+}
+table td:first-child{
+    width: 50%;
+    text-align: left;
+    padding-left: 20px;
+}
+table .done td:first-child{
+    text-decoration: line-through 5px;
+}
+table .done td{
+    background-color: rgb(56, 238, 72);
+}
+table .passed.not_done td{
+    background-color: rgb(222, 67, 67);
+    color: white;
+    border: solid black;
+}
+.flash:hover{
+    cursor: default;
+}
+.flash.error{
+    background-color : rgb(179, 25, 25);
+    width: auto;
+    margin-bottom: -20px;
+    font-size: 15px;    
+    border: solid red;
+    color: white;
+    border-radius: 40px;
+    text-align : center;
+}
+.flash.info{
+    background-color : rgb(25, 179, 51);
+    position: absolute;
+    top: 5%;
+    width: 30%;
+    font-size: 15px;    
+    border: solid green;
+    color: white;
+    border-radius: 40px;
+    text-align : center;
+    z-index: 3;
+}
+@keyframes border_animation {
+    0% {
+      transform: scale(1,1);
+    }
+    50% {
+      transform: scale(1.02,1.02);
+    }
+  }
