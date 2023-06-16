@@ -258,7 +258,7 @@ table .done td:first-child{
 table .done td{
     background-color: rgb(56, 238, 72);
 }
-table .passed.not_done td{
+table .passed td{
     background-color: rgb(222, 67, 67);
     color: white;
     border: solid black;

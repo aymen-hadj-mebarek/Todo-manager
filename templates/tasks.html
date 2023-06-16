@@ -13,8 +13,9 @@ Tasks
     
     </form>
     <br><br>
-    <!-- <h2>You dont have any tasks to do</h2> -->
-
+    {% if tasks.count()==0 %}
+    <h2>You dont have any tasks to do</h2>
+    {% else %}
     <table>
         <tr>
             <th>Task</th>
@@ -25,7 +26,7 @@ Tasks
         {% for task in tasks %}
         {% if task.done %}
         <tr class="done">
-        {% elif passed == 1 %}
+        {% elif task.date_due < today %}
         <tr class="passed">
         {% else %}
         <tr class="not_done">
@@ -36,25 +37,9 @@ Tasks
                 <td><a href="/delete/{{task.id}}">Delete</a> <br> <a href="/update/{{task.id}}">Update</a></td>
         </tr>
         {% endfor %}
-        <!-- <tr class="not_done">
-            <td>content</td>
-            <td>days</td>   
-            <td>days left</td>   
-            <td><a href="/delete/">Delete</a> <br> <a href="/update/">Update</a></td>
-        </tr>
-        <tr class="done passed">
-            <td>content</td>
-            <td>days</td>   
-            <td>days left</td>   
-            <td><a href="/delete/">Delete</a> <br> <a href="/update/">Update</a></td>
-        </tr>
-        <tr class="not_done passed">
-            <td>content</td>
-            <td>days</td>   
-            <td>days left</td>   
-            <td><a href="/delete/">Delete</a> <br> <a href="/update/">Update</a></td>
-        </tr> -->
     </table>
+    {% endif %}
+
 </div>
 
 {% endblock %}

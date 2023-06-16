@@ -138,6 +138,8 @@ def login():
 def tasks():
     if session.get('email'):
         session['id'] = db.session.query(user).filter(user.email == session.get("email")).first().id
+        tasks = task.query.filter(task.user_id == session['id'])
+        today_date = datetime.today().date()
         if request.method == 'POST':
             task_content = request.form['task_added']
             task_due = (request.form['task_date'])
@@ -148,15 +150,12 @@ def tasks():
                 print(type(task_due))
                 db.session.add(new_task)
                 db.session.commit()
-                tasks = task.query.filter(task.user_id == session['id'])
-                passed = date_comp(date.today().strftime("%Y-%m-%d"),str(task.date_due))
-                return render_template("tasks.html",param=session.get('email'),tasks=tasks,passed=passed)
+                return redirect(url_for("tasks"))
             except:
                 return "error creating task"
         else:
-            tasks = task.query.filter(task.user_id == session['id'])
-            passed = date_comp(date.today().strftime("%Y-%m-%d"),str(task.date_due))
-            return render_template("tasks.html",param=session.get('email'),tasks=tasks,passed=passed)
+            # tasks = task.query.filter(task.user_id == session['id'])
+            return render_template("tasks.html",param=session.get('email'),tasks=tasks,today=today_date)
     else:
         flash("You need to log in to access to your tasks",category="error")
         return redirect(url_for("home"))
@@ -167,9 +166,29 @@ def logout():
     session.clear()
     return redirect(url_for('home'))
 
-@app.route("/delete")
-def delete():
-    return redirect(url_for('home'))
+@app.route("/delete/<id>")
+def delete(id):
+    task_to_delete = task.query.get_or_404(id)
+    if task_to_delete :
+        db.session.delete(task_to_delete)
+        db.session.commit()
+        
+    return redirect(url_for('tasks'))
+
+@app.route("/update/<id>")
+def update(id):
+    task_to_update = task.query.get_or_404(id)
+    if task_to_update:
+        if task_to_update.done == False:
+            task_to_update.done = True
+        else:
+            task_to_update.done = False
+            
+        db.session.commit()
+        return redirect(url_for("tasks"))
+    else:
+        return "error updating the task"
+
 
 @app.route("/database/<email>")
 def database(email):
