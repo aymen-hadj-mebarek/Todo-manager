@@ -1,5 +1,5 @@
 import os
-from datetime import datetime
+from datetime import datetime,date
 from flask import Flask, redirect, render_template, session, url_for, request,flash
 from flask_sqlalchemy import SQLAlchemy
 
@@ -138,8 +138,25 @@ def login():
 def tasks():
     if session.get('email'):
         session['id'] = db.session.query(user).filter(user.email == session.get("email")).first().id
-        
-        return render_template("tasks.html",param=session.get('email'))
+        if request.method == 'POST':
+            task_content = request.form['task_added']
+            task_due = (request.form['task_date'])
+            task_due = datetime.strptime(task_due, "%Y-%m-%d")
+            new_task = task(content=task_content, date_due=task_due,user_id=session["id"])
+            try:
+                print("creating task")
+                print(type(task_due))
+                db.session.add(new_task)
+                db.session.commit()
+                tasks = task.query.filter(task.user_id == session['id'])
+                passed = date_comp(date.today().strftime("%Y-%m-%d"),str(task.date_due))
+                return render_template("tasks.html",param=session.get('email'),tasks=tasks,passed=passed)
+            except:
+                return "error creating task"
+        else:
+            tasks = task.query.filter(task.user_id == session['id'])
+            passed = date_comp(date.today().strftime("%Y-%m-%d"),str(task.date_due))
+            return render_template("tasks.html",param=session.get('email'),tasks=tasks,passed=passed)
     else:
         flash("You need to log in to access to your tasks",category="error")
         return redirect(url_for("home"))
@@ -166,6 +183,25 @@ def password_ceck(mdps):
     else:
         return False
 
+def date_comp(date1, date2):
+    date1 = date1.split('-')
+    date2 = date2.split('-')
+    if int(date1[0]) == int(date2[0]):
+        if int(date1[1]) == int(date2[1]):
+            if int(date1[2]) == int(date2[2]):
+                return 0
+            elif int(date1[2]) > int(date2[2]):
+                return 1
+            else:
+                return -1
+        elif int(date1[1]) > int(date2[1]):
+            return 1
+        else:
+            return -1
+    elif int(date1[0]) > int(date2[0]):
+        return 1
+    else:
+        return -1
 
 if __name__ == '__main__':
     """
