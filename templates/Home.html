@@ -10,8 +10,19 @@ Home Page
 
     <div class="text">
         <h1>Task Manager</h1>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat soluta sint doloremque itaque facilis ipsum assumenda totam earum ullam atque? In blanditiis illum culpa id ducimus adipisci consectetur veritatis laboriosam!
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, beatae? Deserunt nisi, ab dignissimos aliquid modi maiores, repellat eum beatae illum quod magni perspiciatis deleniti eius vitae blanditiis architecto accusamus.
+        {% if param %}
+        Hello <span style="text-decoration: underline;">{{param}}</span> here you will find the tasks you did save to do later, i hope this app will get you going with your tasks better.
+        don't forget :
+        <br>
+        <p style="color:red">COLOR red</p> means that the task due is over already
+        <p style="color:rgb(56, 238, 72)">COLOR green</p> means that the task is already finished
+        {% else %}
+        
+        Hello there, this is a simple web application that will help you store your tasks and objectives and even put a delai to them. i hope this simple application will get your liking.
+        <br>
+        <br>
+        you need to login to your account to see the tasks that you have, if you don't have an account already you can just create one bu the sign up button.
+        {% endif %}
     </div>
     {% block infos %}
     {% with messages = get_flashed_messages() %}

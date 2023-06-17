@@ -57,7 +57,8 @@ def index():
 @app.route('/home')
 def home(param=None):
     if session:
-        param = session.get('email')
+        email = session.get('email')
+        param = db.session.query(user).filter(user.email==email).first().name
     else:
         param = None 
     return render_template('Home.html',param=param)
