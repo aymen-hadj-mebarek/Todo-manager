@@ -94,7 +94,8 @@ To get started with this project, follow these steps:
 ├── templates/            # HTML templates (Signup, Login, Tasks, Home) 
 ├── static/               # Static files (CSS, Images, etc.) 
 ├── instance/             # SQLite database file is stored here 
-├── requirements.txt      # List of dependencies └── README.md             # This README file
+├── requirements.txt      # List of dependencies
+└── README.md             # This README file
 ```
 
 ## Future Improvements
