@@ -36,7 +36,7 @@ To get started with this project, follow these steps:
 1. **Clone the repository**:
     
     ```powershell
-    git clone https://github.com/yourusername/flask-task-manager.git cd flask-task-manager
+    git clone https://github.com/aymen-hadj-mebarek/flask-task-manager.git cd flask-task-manager
     ```
     
 2. **Create a virtual environment** (optional but recommended):
